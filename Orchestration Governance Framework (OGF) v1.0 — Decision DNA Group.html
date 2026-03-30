@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)file:///Users/chancecurtiss/Downloads/OGF_v12.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orchestration Governance Framework (OGF) v1.0 — Decision DNA Group</title>
+<link href="./Orchestration Governance Framework (OGF) v1.0 — Decision DNA Group_files/css2" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1B2A4A;
+    --teal: #0F6E56;
+    --teal-light: #E1F5EE;
+    --amber: #854F0B;
+    --amber-light: #FAEEDA;
+    --red: #A32D2D;
+    --red-light: #FCEBEB;
+    --purple: #3C3489;
+    --purple-light: #EEEDFE;
+    --blue: #185FA5;
+    --blue-light: #E6F1FB;
+    --grey-dark: #4A5568;
+    --grey-mid: #718096;
+    --grey-border: #CBD5E0;
+    --grey-light: #F7FAFC;
+    --grey-mid2: #EDF2F7;
+    --white: #FFFFFF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--grey-dark);
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    background: var(--navy);
+    padding: 72px 80px 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: rgba(15,110,86,0.12);
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 40%;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .cover-org {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8BAFD4;
+    margin-bottom: 20px;
+  }
+  .cover-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 52px;
+    line-height: 1.1;
+    color: #fff;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+  .cover-meta {
+    font-size: 17px;
+    color: #C5D5E8;
+    margin-bottom: 28px;
+    font-weight: 300;
+  }
+  .cover-desc {
+    font-size: 15px;
+    color: #8BAFD4;
+    max-width: 620px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+  .cover-copy {
+    font-size: 13px;
+    color: #8BAFD4;
+  }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  /* ── EXECUTIVE SUMMARY ── */
+  .exec-summary {
+    background: var(--navy);
+    margin: 0;
+    padding: 52px 80px;
+  }
+  .exec-summary h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+  .exec-summary p {
+    font-size: 16px;
+    color: #C5D5E8;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .exec-summary p:last-child { margin-bottom: 0; }
+
+  /* ── HOW TO USE ── */
+  .how-to-use {
+    background: var(--teal-light);
+    padding: 28px 80px;
+    border-bottom: 2px solid var(--teal);
+  }
+  .how-to-use h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--teal);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .how-to-use p {
+    font-size: 15px;
+    color: var(--grey-dark);
+    line-height: 1.65;
+  }
+
+  /* ── SECTION DIVIDER ── */
+  .section-divider {
+    background: var(--navy);
+    padding: 28px 80px;
+    margin-top: 56px;
+  }
+  .section-divider .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: #8BAFD4;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+  }
+  .section-divider h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .section-divider .section-sub {
+    font-size: 14px;
+    color: #C5D5E8;
+    font-style: italic;
+  }
+
+  /* ── CONTENT AREA ── */
+  .content {
+    padding: 40px 80px;
+  }
+
+  p { margin-bottom: 18px; font-size: 16px; line-height: 1.7; }
+
+  h3.subhead {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--navy);
+    margin: 36px 0 12px;
+  }
+
+  /* ── SCOPE TABLE ── */
+  .scope-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 15px;
+  }
+  .scope-table th {
+    background: var(--navy);
+    color: #fff;
+    padding: 12px 16px;
+    text-align: left;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .scope-table td {
+    padding: 11px 16px;
+    border: 1px solid var(--grey-border);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+  .scope-table tr:nth-child(even) td { background: var(--grey-light); }
+  .scope-table tr:nth-child(odd) td { background: #fff; }
+
+  /* ── DEFINITIONS TABLE ── */
+  .defs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 15px;
+  }
+  .defs-table th {
+    background: var(--navy);
+    color: #fff;
+    padding: 12px 16px;
+    text-align: left;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .defs-table td {
+    padding: 12px 16px;
+    border: 1px solid var(--grey-border);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  .defs-table tr:nth-child(even) td { background: var(--grey-light); }
+  .defs-table tr:nth-child(odd) td { background: #fff; }
+  .defs-table .term {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--teal);
+    white-space: nowrap;
+  }
+
+  /* ── SINGLE PLATFORM TABLE ── */
+  .sp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 13px;
+  }
+  .sp-table th {
+    background: var(--navy);
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .sp-table td {
+    padding: 10px 12px;
+    border: 1px solid var(--grey-border);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .sp-table .phase-row td {
+    background: var(--grey-mid2);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--grey-dark);
+    padding: 7px 12px;
+  }
+  .comp-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .comp-name {
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--navy);
+  }
+  .owns-company { color: var(--teal); font-weight: 700; font-size: 12px; }
+  .owns-shared { color: var(--amber); font-weight: 700; font-size: 12px; }
+  .compliance-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--purple);
+    display: block;
+    line-height: 1.8;
+  }
+
+  /* ── VENDOR SPLIT BOXES ── */
+  .vendor-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    margin: 24px 0;
+    border: 1px solid var(--grey-border);
+  }
+  .vendor-box {
+    padding: 18px;
+  }
+  .vendor-box.blue-box { background: var(--blue-light); }
+  .vendor-box.amber-box { background: var(--amber-light); }
+  .vendor-box.teal-box { background: var(--teal-light); }
+  .vendor-box-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .vendor-box.blue-box .vendor-box-title { color: var(--blue); }
+  .vendor-box.amber-box .vendor-box-title { color: var(--amber); }
+  .vendor-box.teal-box .vendor-box-title { color: var(--teal); }
+  .vendor-box p { font-size: 13px; line-height: 1.55; margin-bottom: 0; }
+
+  /* ── CALLOUT BOXES ── */
+  .callout {
+    padding: 20px 24px;
+    margin: 24px 0;
+    border-left: 4px solid;
+  }
+  .callout.teal { background: var(--teal-light); border-color: var(--teal); }
+  .callout.amber { background: var(--amber-light); border-color: var(--amber); }
+  .callout.grey { background: var(--grey-light); border-color: var(--grey-mid); }
+  .callout-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+  .callout.teal .callout-label { color: var(--teal); }
+  .callout.amber .callout-label { color: var(--amber); }
+  .callout.grey .callout-label { color: var(--grey-mid); }
+  .callout p { font-size: 15px; line-height: 1.65; margin-bottom: 0; font-style: italic; }
+
+  /* ── PROTOCOL TABLE ── */
+  .protocol-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 14px;
+  }
+  .protocol-table th {
+    background: var(--navy);
+    color: #fff;
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .protocol-table td {
+    padding: 12px 16px;
+    border: 1px solid var(--grey-border);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  .protocol-table tr:nth-child(even) td { background: var(--grey-light); }
+  .protocol-table tr:nth-child(odd) td { background: #fff; }
+
+  /* ── THREE LAYER TABLE ── */
+  .layer-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+  }
+  .layer-row td {
+    padding: 20px 24px;
+    border: 1px solid var(--grey-border);
+    vertical-align: top;
+  }
+  .layer-badge td { background: var(--red-light); }
+  .layer-handshake td { background: var(--amber-light); }
+  .layer-patchwork td { background: #fff; }
+  .layer-toolbelt td { background: var(--teal-light); }
+  .layer-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .layer-badge .layer-name { color: var(--red); }
+  .layer-handshake .layer-name { color: var(--amber); }
+  .layer-patchwork .layer-name { color: var(--navy); }
+  .layer-toolbelt .layer-name { color: var(--teal); }
+  .layer-desc { font-size: 14px; color: var(--grey-dark); line-height: 1.6; }
+
+  /* ── BADGE CHECKLIST ── */
+  .checklist-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+  }
+  .checklist-header td {
+    background: var(--navy);
+    color: #fff;
+    padding: 14px 20px;
+  }
+  .checklist-header .ch-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+  .checklist-header .ch-sub {
+    font-size: 13px;
+    color: #C5D5E8;
+    font-style: italic;
+  }
+  .cat-row td {
+    padding: 10px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .cat-check td { background: var(--teal-light); color: var(--teal); }
+  .cat-partial td { background: var(--amber-light); color: var(--amber); }
+  .cat-missing td { background: var(--red-light); color: var(--red); }
+  .item-row td {
+    padding: 9px 16px 9px 32px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--grey-border);
+    line-height: 1.55;
+  }
+  .item-check td { background: #F0FAF5; }
+  .item-partial td { background: #FDF8F0; }
+  .item-missing td { background: #FDF2F2; }
+  .checklist-footer td {
+    background: var(--grey-light);
+    padding: 16px 20px;
+    font-size: 13px;
+    color: var(--grey-dark);
+    border: 1px solid var(--grey-border);
+  }
+  .checklist-footer strong { color: var(--navy); display: block; margin-bottom: 6px; }
+
+  /* ── REQUIREMENT BLOCKS ── */
+  .req-block {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    margin: 16px 0;
+    border: 1px solid var(--grey-border);
+    overflow: hidden;
+  }
+  .req-num-cell {
+    background: var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    color: #fff;
+  }
+  .req-content {
+    background: var(--teal-light);
+    padding: 18px 20px;
+  }
+  .req-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--teal);
+    margin-bottom: 8px;
+  }
+  .req-body { font-size: 14px; line-height: 1.65; color: var(--grey-dark); margin-bottom: 12px; }
+  .req-testability {
+    border-top: 1px solid rgba(15,110,86,0.2);
+    padding-top: 12px;
+    margin-top: 4px;
+  }
+  .req-testability-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+  .testability-row {
+    margin: 5px 0;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  .testability-row strong { color: var(--navy); }
+
+  /* ── SCENARIO TABLES ── */
+  .scenario-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  .scenario-table td {
+    padding: 12px 16px;
+    border: 1px solid var(--grey-border);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  .scenario-table .s-label {
+    background: var(--grey-mid2);
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--navy);
+    width: 160px;
+    white-space: nowrap;
+  }
+  .scenario-table tr:nth-child(even) .s-label { background: var(--grey-light); }
+  .scenario-table tr:nth-child(even) td:last-child { background: var(--grey-light); }
+
+  /* ── COMPETITIVE TABLE ── */
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 13px;
+  }
+  .comp-table th {
+    background: var(--navy);
+    color: #fff;
+    padding: 11px 14px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .comp-table td {
+    padding: 12px 14px;
+    border: 1px solid var(--grey-border);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+  .comp-table tr:nth-child(even) td { background: var(--grey-light); }
+  .comp-table tr:nth-child(odd) td { background: #fff; }
+  .comp-cat { font-weight: 700; color: var(--navy); font-size: 13px; }
+
+  /* ── MATURITY TABLE ── */
+  .maturity-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 13px;
+  }
+  .maturity-table th {
+    background: var(--navy);
+    color: #fff;
+    padding: 11px 14px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .maturity-table td {
+    padding: 14px;
+    border: 1px solid var(--grey-border);
+    vertical-align: top;
+    line-height: 1.6;
+    font-size: 13px;
+  }
+  .stage-cell {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  /* ── IMMEDIATE ACTIONS ── */
+  .action-block {
+    margin: 16px 0;
+  }
+  .action-block strong { color: var(--navy); }
+
+  /* ── SOURCE NOTES ── */
+  .source-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 13px;
+  }
+  .source-table th {
+    background: var(--navy);
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .source-table td {
+    padding: 11px 14px;
+    border: 1px solid var(--grey-border);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  .source-table tr:nth-child(even) td { background: var(--grey-light); }
+  .source-table tr:nth-child(odd) td { background: #fff; }
+  .source-claim { font-weight: 700; color: var(--navy); font-size: 13px; }
+
+  /* ── FOOTER ── */
+  .doc-footer {
+    background: var(--navy);
+    padding: 36px 80px;
+    text-align: center;
+    margin-top: 64px;
+  }
+  .doc-footer .footer-org {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .doc-footer .footer-meta {
+    font-size: 13px;
+    color: #8BAFD4;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    .cover, .exec-summary, .how-to-use, .section-divider, .doc-footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+
+  @media (max-width: 768px) {
+    .cover, .exec-summary, .how-to-use, .section-divider, .content { padding-left: 24px; padding-right: 24px; }
+    .cover-title { font-size: 36px; }
+    .vendor-split { grid-template-columns: 1fr; }
+    .req-block { grid-template-columns: 40px 1fr; }
+  }
+</style>
+</head>
+<body>
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-org">Decision DNA Group</div>
+  <div class="cover-title">The Orchestration Governance Framework</div>
+  <div class="cover-meta">OGF v1.0 &nbsp;|&nbsp; A proposed standard for multi-platform, multi-agent AI governance</div>
+  <div class="cover-desc">This document defines what governed orchestration requires. It is a standard, not a product. Organizations implement it through whatever combination of process, tooling, and organizational commitment satisfies the requirements.</div>
+  <div class="cover-copy">© 2026 Decision DNA Group &nbsp;|&nbsp; Open resource — freely shareable with attribution</div>
+</div>
+
+<!-- EXECUTIVE SUMMARY -->
+<div class="exec-summary">
+  <h2>Executive Summary</h2>
+  <p>Enterprise AI has matured its coordination layer faster than its authority layer. The protocols that enable agents to connect and communicate, MCP and A2A, are now in broad production use. What does not yet exist is the governance infrastructure that ensures agents are organizationally authorized to act on what those protocols enable. That gap is the focus of this framework.</p>
+  <p>The Orchestration Governance Framework defines eight requirements for governed orchestration across platform boundaries: cross-platform agent inventory, pre-deployment authority definition, authority inheritance protocols, cross-platform provenance tracking, system-level behavioral monitoring, evidence-based rule governance, version-controlled authority records, and unified accountability attribution. These requirements are numbered 7 through 14 as a continuous extension of the six single-platform governance components that must be in place first.</p>
+  <p>The OGF is intended for enterprise governance leaders, AI operations teams, platform architects, and compliance professionals who are deploying or designing multi-agent systems. It is a standard, not a product. Organizations implement it through whatever combination of process, tooling, and organizational commitment satisfies the requirements.</p>
+  <p>Three actions any organization can begin this week without procurement: (1) inventory every agent in your environment and assign a named owner to each; (2) name a Logic Product Manager accountable for governance rule accuracy in your highest-volume agent deployment; (3) document the governance rules for your most consequential agent with full provenance, including the reasoning behind each rule and when it should be reconsidered.</p>
+</div>
+
+<!-- HOW TO USE -->
+<div class="how-to-use">
+  <h3>How to use this document</h3>
+  <p>This framework has two layers. Section A documents the single-platform governance foundation: the six components any organization needs before attempting multi-platform orchestration. Section B is the OGF itself: the eight requirements for governed orchestration across platforms. You cannot implement Section B without Section A. The maturity table in Section D tells you where you are and what to build next.</p>
+</div>
+
+<!-- SECTION 0 -->
+<div class="section-divider">
+  <div class="section-num">Section 0</div>
+  <h2>Scope and Non-Scope</h2>
+  <div class="section-sub">What this framework covers and what it deliberately does not</div>
+</div>
+<div class="content">
+  <p>The Orchestration Governance Framework addresses a specific and bounded problem: the authority governance gap that emerges when AI agents coordinate across platform boundaries. It is not a comprehensive AI governance standard. It does not replace, duplicate, or compete with existing governance disciplines. Understanding what the OGF covers and does not cover is necessary to apply it correctly.</p>
+
+  <table class="scope-table">
+    <tbody><tr>
+      <th>OGF covers</th>
+      <th>OGF does not cover</th>
+    </tr>
+    <tr>
+      <td>Cross-platform authority governance: ensuring agents are sanctioned to act in the context of a multi-platform orchestration chain</td>
+      <td>Model governance: the technical management of AI model development, training, evaluation, and versioning</td>
+    </tr>
+    <tr>
+      <td>Authority inheritance: governed handoff of authorization context when tasks pass between agents across platform boundaries</td>
+      <td>Cybersecurity and identity access management: authentication, secrets management, threat detection, and zero-trust architecture</td>
+    </tr>
+    <tr>
+      <td>Cross-platform provenance tracking: maintaining an auditable record of authorization decisions across a multi-agent chain</td>
+      <td>Content guardrails: enforcement of output quality, safety, and compliance at the inference layer</td>
+    </tr>
+    <tr>
+      <td>System-level behavioral governance: monitoring orchestrated systems for emergent outcomes invisible at the individual agent level</td>
+      <td>Single-platform governance in isolation: addressed in Section A as the prerequisite foundation, not as OGF scope</td>
+    </tr>
+    <tr>
+      <td>Accountability attribution: tracing multi-agent outcomes to specific authorization decisions and named human accountabilities</td>
+      <td>Data governance: data quality, lineage, classification, and access outside the context of agent authorization</td>
+    </tr>
+    <tr>
+      <td>Governance debt: the accumulated liability from operating orchestration systems without cross-platform authority infrastructure</td>
+      <td>Vendor selection: the OGF defines requirements; it does not evaluate, endorse, or recommend specific products or platforms</td>
+    </tr>
+  </tbody></table>
+</div>
+
+<!-- DEFINITIONS -->
+<div class="section-divider">
+  <div class="section-num">Section Definitions</div>
+  <h2>Key Terms</h2>
+  <div class="section-sub">Precise definitions for terms used throughout this framework</div>
+</div>
+<div class="content">
+  <p>The following definitions apply throughout this document. Where a term has an established meaning in an existing standard or regulation, this document uses the established meaning unless otherwise noted.</p>
+
+  <table class="defs-table">
+    <tbody><tr>
+      <th style="width:160px;">Term</th>
+      <th>Definition</th>
+    </tr>
+    <tr>
+      <td><span class="term">Agent</span></td>
+      <td>An AI system that perceives inputs, processes them, and takes actions or produces outputs with a degree of autonomy within a configured boundary. For the purposes of this framework, an agent is distinguished from a static model or API by its capacity to take consequential actions on behalf of an organization.</td>
+    </tr>
+    <tr>
+      <td><span class="term">Authority</span></td>
+      <td>The organizational sanction for an agent to take a specific action on behalf of the organization, granted by a human with the standing to grant it, under conditions that are defined and remain current. Authority is distinct from capability. An agent may be capable of an action it is not authorized to take.</td>
+    </tr>
+    <tr>
+      <td><span class="term">Capability</span></td>
+      <td>The technical ability of an agent to perform an action given its access, tools, and instruction set. Capability is determined by the agent's configuration and the permissions granted at the platform level.</td>
+    </tr>
+    <tr>
+      <td><span class="term">Consequential action</span></td>
+      <td>Any agent action that creates, modifies, or removes a record, commitment, payment, communication, or decision that has operational, financial, legal, or regulatory implications for the organization or its stakeholders.</td>
+    </tr>
+    <tr>
+      <td><span class="term">Governance rule</span></td>
+      <td>A documented specification of what an agent is authorized to do, under what conditions, within what limits, and with what escalation triggers. A governance rule is the unit of the decision registry.</td>
+    </tr>
+    <tr>
+      <td><span class="term">Orchestration chain</span></td>
+      <td>A sequence of two or more agents coordinating to accomplish a shared goal, where at least one task handoff occurs across a platform or vendor boundary.</td>
+    </tr>
+    <tr>
+      <td><span class="term">Platform boundary</span></td>
+      <td>The point at which a task, context, or decision moves from one vendor's AI infrastructure to another's, or from a vendor's infrastructure to an internally built system.</td>
+    </tr>
+    <tr>
+      <td><span class="term">Provenance</span></td>
+      <td>A complete, auditable record of the authorization decisions that produced a given agent action or orchestration outcome, including who authorized each step, when, on what evidence, and under what governance rules.</td>
+    </tr>
+    <tr>
+      <td><span class="term">Substantial modification</span></td>
+      <td>Under the EU AI Act, a change to an AI system after it has been placed on the market or put into service that affects compliance with the Act or changes its intended purpose relative to the original conformity assessment, triggering treatment of the modifying party as a provider for that modified system under Article 25. In a multi-agent context, whether chaining agents into a new decision pipeline constitutes substantial modification is fact-dependent and assessed against the original conformity scope of each agent involved. This document treats it as an interpretation requiring legal analysis, not a settled rule.</td>
+    </tr>
+    <tr>
+      <td><span class="term">Tethered agent</span></td>
+      <td>An agent executing within a fixed instruction set configured at deployment time, with no automatic mechanism to update that instruction set when organizational policy, regulatory requirements, or operational conditions change.</td>
+    </tr>
+  </tbody></table>
+</div>
+
+<!-- SECTION A -->
+<div class="section-divider">
+  <div class="section-num">Section A</div>
+  <h2>The Single-Platform Governance Foundation</h2>
+  <div class="section-sub">The prerequisite for governed orchestration: six components, four maturity stages</div>
+</div>
+<div class="content">
+  <p>Governed orchestration is not possible without a governed foundation. Before any organization can address the cross-platform authority problems that orchestration introduces, it must have the single-platform governance infrastructure in place for the agents it already runs. This section documents that foundation: what each component requires, what good looks like, and how common good practice actually is.</p>
+  <p>Most organizations reading this are at Stage 1 or early Stage 2. That is not a failure. It is a starting point. The value of knowing your stage is that it tells you what to build next rather than what you should have built already.</p>
+
+  <table class="sp-table">
+    <tbody><tr>
+      <th style="width:140px;">Component</th>
+      <th>What it does</th>
+      <th>What good looks like</th>
+      <th style="width:60px;">Owns</th>
+      <th>How common is good</th>
+      <th style="width:110px;">Compliance</th>
+    </tr>
+    <tr class="phase-row"><td colspan="6">PHASE 0: BEFORE DEPLOYMENT</td></tr>
+    <tr>
+      <td><span class="comp-num" style="color:#854F0B;">0a</span><span class="comp-name">Shadow AI Discovery</span></td>
+      <td>Complete inventory of every AI tool and agent running in the environment: sanctioned and unsanctioned. You cannot govern what you have not found. CIOs estimate 60–70 tools. Monitoring typically reveals 200–300.</td>
+      <td>Automated discovery running continuously. Every agent has a named owner before it touches production data. Shadow AI surfaced and assessed rather than blocked.</td>
+      <td><span class="owns-shared">Shared</span></td>
+      <td>Some orgs have periodic manual inventory. Very few have continuous automated discovery.</td>
+      <td><span class="compliance-tag">EU AI Act</span><span class="compliance-tag">GDPR</span><span class="compliance-tag">ISO 42001</span><span class="compliance-tag">SOC 2</span></td>
+    </tr>
+    <tr>
+      <td><span class="comp-num" style="color:#854F0B;">0b</span><span class="comp-name">Pre-Deployment Governance</span></td>
+      <td>Formal authorization of every agent before go-live: purpose definition, scope boundaries, initial rule set, and first provenance record. Governance begins at intent, not at incident.</td>
+      <td>Structured intake for every deployment. Initial rule set documented before first production action. Authority boundaries approved by named human.</td>
+      <td><span class="owns-company">Company</span></td>
+      <td>Most orgs do basic config before go-live. Very few do formal authorization with provenance.</td>
+      <td><span class="compliance-tag">EU AI Act</span><span class="compliance-tag">NIST AI RMF</span><span class="compliance-tag">ISO 42001</span></td>
+    </tr>
+    <tr class="phase-row"><td colspan="6">PHASE 1: RUNTIME</td></tr>
+    <tr>
+      <td><span class="comp-num" style="color:#185FA5;">1</span><span class="comp-name">Continuous Behavioral Monitoring</span></td>
+      <td>Always-on detection of agent behavior: action volume, decision distribution, escalation rate, and reasoning chain visibility.</td>
+      <td>Real-time anomaly alerts to a named owner. Reasoning visibility beyond outcome logging. Audit trail calibrated to regulatory requirements.</td>
+      <td><span class="owns-shared">Shared</span></td>
+      <td>Outcome logging: most orgs. Governance-grade reasoning capture: very few.</td>
+      <td><span class="compliance-tag">EU AI Act</span><span class="compliance-tag">NIST AI RMF</span><span class="compliance-tag">HIPAA</span><span class="compliance-tag">ISO 42001</span></td>
+    </tr>
+    <tr>
+      <td><span class="comp-num" style="color:#185FA5;">2</span><span class="comp-name">Dedicated AI Operations Function</span></td>
+      <td>Named team with explicit accountability for agent governance as an ongoing operational responsibility, distinct from platform technical ownership.</td>
+      <td>Business lead, technical lead, governance lead with defined authority. Primary job is governance accuracy, not platform uptime.</td>
+      <td><span class="owns-company">Company</span></td>
+      <td>Dedicated governance team: few orgs. Named owner: more common in regulated industries.</td>
+      <td><span class="compliance-tag">EU AI Act</span><span class="compliance-tag">NIST AI RMF</span><span class="compliance-tag">ISO 42001</span></td>
+    </tr>
+    <tr class="phase-row"><td colspan="6">PHASE 2: CONTINUOUS IMPROVEMENT</td></tr>
+    <tr>
+      <td><span class="comp-num" style="color:#0F6E56;">3</span><span class="comp-name">Escalation Review Cadence</span></td>
+      <td>Regular structured review of every escalation: pattern identification, root cause diagnosis across three categories: threshold issues, process changes, and model drift.</td>
+      <td>Weekly cadence. Three-category root cause framework. Vendor model releases reviewed as standing agenda item.</td>
+      <td><span class="owns-company">Company</span></td>
+      <td>Informal periodic review: some orgs. Weekly cadence with defined outputs: very few.</td>
+      <td><span class="compliance-tag">NIST AI RMF</span><span class="compliance-tag">EU AI Act</span><span class="compliance-tag">ISO 42001</span></td>
+    </tr>
+    <tr>
+      <td><span class="comp-num" style="color:#0F6E56;">4</span><span class="comp-name">Pre-Deployment Simulation</span></td>
+      <td>Required validation before any logic change goes live. Proposed change run against 30 days of historical transaction data to understand blast radius and unintended consequences.</td>
+      <td>Every logic change backtested. Simulation results attached as evidence to approved rule. Evidence standard required before deployment authorized.</td>
+      <td><span class="owns-company">Company</span></td>
+      <td>Manual testing against sample cases: some orgs. Systematic backtesting: very few.</td>
+      <td><span class="compliance-tag">SR 11-7 (fin. services)</span><span class="compliance-tag">EU AI Act</span><span class="compliance-tag">NIST AI RMF</span></td>
+    </tr>
+    <tr>
+      <td><span class="comp-num" style="color:#0F6E56;">5</span><span class="comp-name">Change Approval Process</span></td>
+      <td>Defined decision rights: which changes AI ops approves autonomously, which require business sign-off, which require senior leadership or compliance review.</td>
+      <td>Three approval tiers with clear criteria. Simulation evidence required for Tier 2 and 3. Rollback procedure defined before go-live.</td>
+      <td><span class="owns-company">Company</span></td>
+      <td>Informal approval: most orgs. Tiered framework with explicit liability assignment: very few.</td>
+      <td><span class="compliance-tag">SOX</span><span class="compliance-tag">EU AI Act</span><span class="compliance-tag">ISO 42001</span><span class="compliance-tag">SOC 2</span></td>
+    </tr>
+    <tr>
+      <td><span class="comp-num" style="color:#3C3489;">6</span><span class="comp-name">Decision Registry</span></td>
+      <td>Version-controlled record of every governance rule: what it is, why it exists, evidence that justified it, who approved it, and when to reconsider it. The institutional memory that governs what agents do.</td>
+      <td>Full provenance for every rule including reasoning chain. Machine-readable. Reconsideration triggers assigned at creation. ISO 42001 evidence generated as operational byproduct.</td>
+      <td><span class="owns-company">Company</span></td>
+      <td>Config files and change logs: most orgs. Full provenance with reasoning: very few.</td>
+      <td><span class="compliance-tag">EU AI Act</span><span class="compliance-tag">NIST AI RMF</span><span class="compliance-tag">HIPAA</span><span class="compliance-tag">ISO 42001</span></td>
+    </tr>
+  </tbody></table>
+
+  <div class="vendor-split">
+    <div class="vendor-box blue-box">
+      <div class="vendor-box-title">Vendor controls: model layer</div>
+      <p>Model behavior, base guardrails, model updates. Customers have no direct control. Model drift originates here.</p>
+    </div>
+    <div class="vendor-box amber-box">
+      <div class="vendor-box-title">Shared: configuration layer</div>
+      <p>Thresholds, escalation rules, workflow logic. Customer-controlled within vendor parameters. Outcome logging varies significantly by platform.</p>
+    </div>
+    <div class="vendor-box teal-box">
+      <div class="vendor-box-title">Company owns: governance layer</div>
+      <p>All six governance components. These capabilities are usually fragmented across tooling and internal process and are rarely provided as a complete governance operating layer by any single vendor. This is the gap most organizations do not see.</p>
+    </div>
+  </div>
+</div>
+<!-- SECTION B -->
+<div class="section-divider">
+  <div class="section-num">Section B</div>
+  <h2>The Orchestration Governance Framework</h2>
+  <div class="section-sub">Eight requirements for multi-platform, multi-agent AI governance: Phase 3 of the maturity framework</div>
+</div>
+<div class="content">
+
+  <h3 class="subhead">B1. The Definitional Statement</h3>
+  <p>Orchestration governance is the discipline of establishing and enforcing authority boundaries across multi-agent, multi-platform AI systems before and during coordination, not as a constraint on orchestration, but as the foundation that makes orchestration trustworthy.</p>
+  <p>Where orchestration engineering solves the question of how agents coordinate, orchestration governance solves the prior question of whether agents have the authority to coordinate, under what conditions, within what constraints, and with what accountability when coordination produces unintended outcomes.</p>
+  <p>The tools and protocols for agent coordination have matured faster than the governance infrastructure required to authorize what that coordination produces. That gap is not a feature of immature technology. It is a structural property of how the market has sequenced the problem.</p>
+
+  <h3 class="subhead">B2. The Sequencing Argument</h3>
+  <p>The enterprise AI market has built the coordination layer first and treated governance as something to add later. That sequencing is not neutral. Many architectural decisions made in designing an orchestration pipeline implicitly allocate authority, constraint propagation, and accountability without a governance framework in place to examine them.</p>
+  <p>When an enterprise defines how agents decompose tasks, it has implicitly decided which agent has authority to initiate. When it defines how agents pass work to each other, it has implicitly decided what constraints travel with the task. When it defines what happens at boundary conditions, it has implicitly decided who is accountable for the outcome. These decisions do not wait for the governance framework to arrive. They are made in the engineering sprint, encoded in the pipeline logic, and deployed into production. By the time the governance conversation starts, the architecture has already answered the governance questions without asking them.</p>
+
+  <div class="callout teal">
+    <div class="callout-label">The governance principle</div>
+    <p>Governance built after orchestration is archaeology. It tells you what happened. It does not prevent what should not have happened. The correct sequencing is: define the authority structure first, then design the coordination layer to operate within it.</p>
+  </div>
+
+  <h3 class="subhead">B3. The Three-Problem Taxonomy</h3>
+  <p>Multi-platform orchestration introduces three governance problems that do not exist in single-agent, single-platform deployments. They are structurally new, emerging specifically from the interaction between agents across platform boundaries.</p>
+
+  <h3 class="subhead" style="margin-top:24px;">Problem 1: Authority Inheritance</h3>
+  <p>When Agent A passes a task to Agent B on a different platform, the governance constraints that governed Agent A's action do not automatically travel with the task. The technical handoff is handled by A2A. The authority handoff has no equivalent mechanism. Agent B proceeds on capability without any mechanism to validate whether it is organizationally authorized to act. Without authority inheritance protocols, every receiving agent in a multi-platform chain risks becoming a confused deputy: technically authenticated, organizationally ungoverned, inheriting whatever authority claim the sending agent carried with no mechanism to validate its legitimacy.</p>
+
+  <h3 class="subhead" style="margin-top:24px;">Problem 2: Accountability Diffusion</h3>
+  <p>When an outcome is produced by a chain of agents across multiple platforms, accountability cannot be attributed to any single agent, platform, or governance regime without a cross-platform provenance record. Each agent operated within its own platform's constraints. None exceeded its individual authorization. And yet the chain produced an outcome wrong by the standards of the organization's actual operating logic. This is Logic Hallucination: not the AI fabricating facts, but the organization fabricating governance. The system did not fail technically. It failed fiducially.</p>
+  <p>Here is the specific risk the EU AI Act creates for multi-agent deployments. Under the Act, an enterprise is classified as a Deployer when it uses an AI system for its intended purpose. Under Article 25, it may be reclassified as a Provider when it substantially modifies that system. Depending on the facts, chaining agents into a multi-step decision pipeline may raise substantial-modification questions if the resulting system affects compliance or changes intended purpose relative to the original conformity assessment of any agent in the chain. If reclassification occurs, the enterprise takes on full Provider liability: conformity assessments, technical documentation, CE marking, and ongoing monitoring obligations that most enterprises have not prepared for.</p>
+  <p>Violations of Article 5 prohibited practices carry penalties of up to 35 million euros or 7 percent of the company's total worldwide annual turnover, whichever is higher. Operator violations of high-risk AI system obligations, including deployer obligations under Article 26, carry penalties of up to 15 million euros or 3 percent. The Act generally applies from August 2, 2026, with some provisions already in force and others phased in. High-risk AI systems embedded into regulated products have an extended transition period to August 2, 2027.</p>
+  <p>The governance problem is this: without a cross-platform provenance record, an enterprise cannot demonstrate that its orchestrated deployment is a governed use of individual systems rather than a substantial modification that created a new one. The provenance chain is not only an audit artifact. It is the evidentiary foundation of the enterprise's legal classification. Without it, the organization cannot defend its Deployer status if the question is ever asked.</p>
+
+  <h3 class="subhead" style="margin-top:24px;">Problem 3: Emergent Behavior Governance</h3>
+  <p>Emergent behavior governance is the hardest of the three problems to make visible because no individual system is doing anything wrong.</p>
+  <p>Consider two agents operating correctly within their own rules. A scheduling agent prioritizes appointments based on clinical urgency signals. A documentation agent flags certain patient conditions more frequently for follow-up based on its own configuration. Neither agent was designed to discriminate. Neither agent's governance validation surfaces a problem. But together, over weeks of interaction, their combined logic produces a pattern: certain patients consistently receive earlier appointments and more follow-up attention than others, not because of clinical urgency but because of how the two agents' independently correct rule sets happen to interact. This mechanism is not hypothetical. Research in healthcare and other high-stakes domains shows that individually well-performing components do not necessarily yield fair or intended system-level outcomes, underscoring the need for governance at the system level rather than only at the component level.</p>
+  <p>The failure exists only at the interaction level. No audit of either agent individually reveals it. No single-agent monitoring framework detects it because every tool in the current market is built to monitor individual agent behavior, not compound behavior across a multi-agent chain. That is not a gap in specific products. It is a structural limitation of agent-centric monitoring architecture.</p>
+  <p>The regulatory consequence follows directly. The EU AI Act's provisions on algorithmic discrimination apply to what a system produces, not to whether its individual components passed their own governance validation. An enterprise whose multi-agent system produces a discriminatory pattern cannot rely on individual component compliance as a defense. The Act cares about the outcome. The governance framework must therefore operate at the level where the outcome is produced, which is the system level, not the component level.</p>
+  <p>This is what makes emergent behavior governance structurally different from the other two problems. Authority inheritance and accountability diffusion are failures of governance infrastructure: the right infrastructure was not in place. Emergent behavior is a failure of governance scope: the framework was looking at the wrong level. Individual agent compliance is necessary. It is not sufficient. A governed system requires governance at the system level.</p>
+
+  <h3 class="subhead">B4. The Protocol Gap</h3>
+  <p>MCP materially advanced the connectivity problem: how agents access tools, data, and APIs. A2A materially advanced the coordination problem: how agents communicate and delegate tasks to each other. Both protocols achieved rapid, broad adoption because they addressed real structural gaps in the enterprise AI architecture.</p>
+  <p>What neither protocol was designed to solve is the organizational authority problem: whether an agent is sanctioned by the organization to act in this specific context, under current governance policy, as part of this orchestration chain. That is a different problem at a different layer. Naming that boundary is not a criticism of either protocol. It is the precise description of where their scope ends and where the governance layer must begin.</p>
+
+  <table class="protocol-table">
+    <tbody><tr>
+      <th style="width:46%;">What the protocol provides</th>
+      <th>What the protocol does not provide at the organizational authority layer</th>
+    </tr>
+    <tr>
+      <td>MCP: Standardized agent-to-tool connections with OAuth-based technical authorization controlling which resources an agent can access</td>
+      <td>Organizational authority governance: whether the agent is sanctioned by the organization to act in this specific context, under current governance policy, as part of this orchestration chain. Technical access permission is not organizational authority.</td>
+    </tr>
+    <tr>
+      <td>A2A: Structured task delegation between agents with authenticated, scoped communication</td>
+      <td>Whether the originating agent had organizational authority to initiate the task. A2A governs the technical handoff. It does not govern whether the organization sanctioned that handoff under its current governance position.</td>
+    </tr>
+    <tr>
+      <td>Technical authentication and OAuth-based authorization: verified agent identity and scoped resource access</td>
+      <td>Organizational authorization: the governance record that an agent's actions in this context were sanctioned by a named human with the standing to sanction them, under conditions that remain current. Technical authorization confirms the credential. Organizational authority confirms the mandate.</td>
+    </tr>
+    <tr>
+      <td>Task parameters: spending limits, approved categories</td>
+      <td>Whether those parameters reflect current organizational governance intent</td>
+    </tr>
+    <tr>
+      <td>Capability scoping: what tools an agent can access</td>
+      <td>What decisions an agent is sanctioned to make with those tools</td>
+    </tr>
+    <tr>
+      <td>Encrypted, authenticated communication</td>
+      <td>Governance of the decisions made through that communication</td>
+    </tr>
+  </tbody></table>
+
+  <p>Capability is a technical property: it describes what an agent can do. Organizational authority is a governance property: it describes what an agent has been sanctioned to do on behalf of the organization, by someone with the standing to sanction it, under conditions that remain current. The protocols manage capability. They also provide technical authorization in the form of OAuth-based access control, which governs what an agent is technically permitted to access.</p>
+  <p>What they do not provide is organizational authority governance: the version-controlled record that an agent's actions were sanctioned by the organization, the mechanism that verifies that sanction has not decayed, and the cross-platform provenance chain that makes the full orchestration outcome attributable. Based on public information reviewed as of March 2026, we did not identify a generally deployable offering that satisfies the full set of cross-platform organizational authority requirements defined in Requirements 7 through 14 of this framework. Sophisticated organizations have built serious single-platform governance. What the market has not yet produced is the cross-platform authority layer that governs what an orchestrated system is sanctioned to produce at the moment agents coordinate across vendor boundaries.</p>
+
+  <div class="callout amber">
+    <div class="callout-label">The precise claim</div>
+    <p>MCP and A2A tell agents how to talk to each other. The Registry of Authority tells agents whether they are allowed to act on what they said. Both are necessary. Neither substitutes for the other.</p>
+  </div>
+
+  <h3 class="subhead">B5. The Tethered Agent Problem and Governance Debt</h3>
+
+  <h3 class="subhead" style="font-size:17px;color:var(--navy);">The Tethered Agent Problem</h3>
+  <p>The market describes AI agents as autonomous systems. They are not. Every agent is tethered: executing with full capability within boundaries set at configuration time by whoever deployed it, with no mechanism to verify whether those boundaries reflect the organization's current governance intent. The tether is static. The environment it operates in is not. Organizational policy changes. Regulatory requirements evolve. The agent's tether does not know any of this. It holds at the position it was set, executing faithfully within a boundary that made sense when it was configured and may not make sense now.</p>
+  <p>The market is building protections against agents that exceed their authority. The more pervasive risk is agents that execute faithfully within authority that was never quite right. The rogue agent is detectable: it deviates from expected behavior and monitoring systems register it. The tethered agent produces no signal. Every audit comes back clean. The rogue agent is the threat the market is spending on. The tethered agent is the threat the market is under-addressing.</p>
+
+  <h3 class="subhead" style="font-size:17px;color:var(--navy);">Logic Hallucination</h3>
+  <p>Logic Hallucination is what the tethered agent problem produces at the organizational level. Not the AI making up facts. The organization making up governance: believing its configured agents reflect its actual governance intent, when what they actually reflect is a collection of individually set tethers, each potentially correct at configuration time, none systematically maintained against the organization's evolving governance position. Governance at the individual agent level is necessary. It is not sufficient. A governed system requires governance at the system level.</p>
+
+  <h3 class="subhead" style="font-size:17px;color:var(--navy);">Governance Debt</h3>
+  <p>Governance Debt is the accumulated liability that results from operating multi-agent orchestration systems without the governance infrastructure those systems require. Unlike technical debt, which accumulates in code that can be refactored, Governance Debt accumulates in decisions already made, in agent interactions already produced, and in regulatory exposure already accruing.</p>
+  <p>The current agentic enterprise architecture has three distinct layers. The first is the connectivity layer: the standardized protocols that let agents access tools and data. The second is the coordination layer: the protocols that let agents communicate and delegate tasks to each other. The third is the authority layer: the governance infrastructure that ensures agents are organizationally sanctioned to act on what the first two layers enable. The table below summarizes the current state of each. The first two layers have mature, deployable infrastructure. The third does not.</p>
+
+  <table class="layer-table">
+    <tbody><tr class="layer-row layer-toolbelt">
+      <td>
+        <div class="layer-name">MCP: The Tool Belt</div>
+        <div class="layer-desc">Now a founding project of the Agentic AI Foundation under the Linux Foundation. Over 97 million monthly SDK downloads, 10,000+ active servers, with first-class support across ChatGPT, Claude, Cursor, Gemini, Microsoft Copilot, and VS Code. A rapidly maturing open standard that has materially advanced the connectivity layer.</div>
+      </td>
+    </tr>
+    <tr class="layer-row layer-handshake">
+      <td>
+        <div class="layer-name">A2A: The Handshake</div>
+        <div class="layer-desc">Rapidly gaining support across major enterprise vendors and ecosystem partners including AWS, Cisco, Google, Microsoft, Salesforce, SAP, and ServiceNow as founding Linux Foundation members. The coordination layer is advancing at scale.</div>
+      </td>
+    </tr>
+    <tr class="layer-row layer-patchwork">
+      <td>
+        <div class="layer-name">Homegrown: The Patchwork</div>
+        <div class="layer-desc">Fills every gap the protocols and platforms do not cover. Built reactively, person-dependent, and ungovernable at scale. In most organizations this patchwork constitutes the operating reality of AI governance today, regardless of what the policy documents say.</div>
+      </td>
+    </tr>
+    <tr class="layer-row layer-badge">
+      <td>
+        <div class="layer-name">Registry of Authority: The Badge</div>
+        <div class="layer-desc">Elements exist within individual platforms. What does not yet exist is the cross-platform version: a unified, vendor-agnostic authority layer governing the full orchestration chain. That gap is the Governance Debt. See the capability assessment below.</div>
+      </td>
+    </tr>
+  </tbody></table>
+
+  <div class="callout amber">
+    <div class="callout-label">The market timing dynamic</div>
+    <p>The better MCP and A2A get at solving the coordination problem, the more clearly the governance void becomes visible. In March 2026, OpenAI published findings from their internal agent monitoring system showing that agents can be overly eager to work around restrictions in ways invisible to output-only review, and that the developer prompt can inadvertently encourage circumvention. If the most sophisticated AI organization in the world is actively building governance infrastructure to address single-platform agent behavior, the challenge of governing multi-platform orchestration chains is significantly more demanding. Reliable, high-velocity, cross-platform agent coordination operating without cross-platform authority infrastructure does not reduce risk. It accelerates it.</p>
+  </div>
+
+  <h3 class="subhead">The Badge: Capability Assessment as of March 2026</h3>
+  <p>The three-layer architecture makes the governance gap precise. The Tool Belt and the Handshake exist as mature, deployable infrastructure. The Badge does not yet exist as a unified cross-platform layer. But the picture is more nuanced than a simple present or absent. The market is in motion. Some Badge capabilities exist within individual platforms. Others are emerging in partial form. And some have not yet been built in any deployable form.</p>
+  <p>The assessment below maps the current state across those three categories. It is structured this way deliberately: a binary exists or does not exist framing would obscure the progress being made and give organizations either false comfort or false despair. The three-state structure tells you what you can act on today, what is worth tracking, and what requires new infrastructure before it can be implemented.</p>
+  <p>This is a living assessment. The agentic governance space is advancing rapidly. If you are aware of capabilities, implementations, or research that should update any of these assessments, the conversation is open. Contact: [contact]</p>
+
+  <table class="checklist-table">
+    <tbody><tr class="checklist-header"><td colspan="2"><div class="ch-title">The Badge: What exists today and what does not</div><div class="ch-sub">A snapshot of the cross-platform authority landscape as of March 2026</div></td></tr>
+    <tr class="cat-row cat-check"><td colspan="2">✓ Exists within a single platform</td></tr>
+    <tr class="item-row item-check"><td colspan="2">Single-platform decision registries: platform governance tools in several categories maintain version-controlled governance rules within their own environment. Governance is well-defined within the platform boundary. Does not extend to agents on other platforms.</td></tr>
+    <tr class="item-row item-check"><td colspan="2">Agent behavioral monitoring (single platform): enterprise AI platforms increasingly provide behavioral monitoring within their own environments, tracking agent actions, escalations, and outputs. Coverage is platform-scoped. No cross-platform view.</td></tr>
+    <tr class="item-row item-check"><td colspan="2">Cross-platform agent security inventory: agent security platforms can discover and inventory agents across platforms, covering SaaS-managed, homegrown, and device-based agents. Primary lens is security threat detection and posture management rather than authority governance. Req 7 partially addressed from a security posture perspective.</td></tr>
+    <tr class="item-row item-check"><td colspan="2">Version-controlled configuration management: mature engineering organizations maintain version-controlled agent configurations. Captures what changed. Typically does not capture why, who approved, or what evidence justified the change.</td></tr>
+    <tr class="cat-row cat-partial"><td colspan="2">~ Exists in partial or emerging form</td></tr>
+    <tr class="item-row item-partial"><td colspan="2">Cross-platform agent inventory (governance lens): tools are emerging that provide agent inventory across platforms with a governance rather than security orientation. Early stage. Coverage across all agent types including homegrown is inconsistent.</td></tr>
+    <tr class="item-row item-partial"><td colspan="2">Runtime content governance gateways: content governance tools provide enforcement at the inference layer, blocking prompt injections, filtering PII, and preventing harmful outputs. Governs what agents say at the output boundary. Does not govern what agents are authorized to decide or whether cross-platform chains are authorized.</td></tr>
+    <tr class="item-row item-partial"><td colspan="2">Protocol-level provenance and governance discussions: MCP and A2A communities are actively exploring governance maturation and enterprise readiness as formal 2026 roadmap priorities. The MCP 2026 roadmap published in March 2026 identifies governance as an explicit development area. No deployable standard for authority provenance metadata yet exists, but this is an active area with formal working group activity.</td></tr>
+    <tr class="item-row item-partial"><td colspan="2">Regulatory compliance audit trails: some organizations are building cross-platform audit logs to satisfy EU AI Act and NIST AI RMF requirements. Typically per-platform logs manually correlated. Not unified provenance tracking.</td></tr>
+    <tr class="item-row item-partial"><td colspan="2">Non-human identity governance: non-human identity platforms govern what AI agents can access at the identity and permission layer, increasingly with intent inference that evaluates what an agent is trying to do rather than just validating credentials. Addresses Req 7 and partially Req 8. Does not govern authority inheritance or chain provenance as organizational governance artifacts.</td></tr>
+    <tr class="item-row item-partial"><td colspan="2">System-level behavioral monitoring (single-platform): leading AI organizations have begun deploying monitoring systems that review agent reasoning chains, not just outputs, to detect misalignment and circumvention behavior. Published findings from March 2026 confirm that reasoning-chain monitoring surfaces behaviors invisible to output-only review, and that instruction sets can inadvertently encourage agents to work around restrictions. This represents Req 11 partially implemented within single-platform environments. The cross-platform version does not yet exist in deployable form.</td></tr>
+    <tr class="cat-row cat-missing"><td colspan="2">✗ Does not yet exist as deployable infrastructure</td></tr>
+    <tr class="item-row item-missing"><td colspan="2">Unified cross-platform authority registry: a vendor-agnostic, cross-platform registry where every agent's instructions across every platform live in a single governed, version-controlled record accessible to all agents in the chain. Req 13 at the system level.</td></tr>
+    <tr class="item-row item-missing"><td colspan="2">Runtime cross-platform authority check-in: a mechanism where agents verify their current authorization against a central authority layer before taking consequential actions across platform boundaries. Both sides of the handoff performing governed verification. Req 9.</td></tr>
+    <tr class="item-row item-missing"><td colspan="2">Unified cross-platform provenance chain: an unbroken authorization record linking every action across every vendor in a multi-agent chain from initiation to execution. Not per-platform logs. A unified chain auditable as a system. Req 10.</td></tr>
+    <tr class="item-row item-missing"><td colspan="2">Cross-platform emergent behavior monitoring: system-level monitoring that detects interaction-level patterns emerging from the combined behavior of multiple agents across different platforms and vendors, invisible to any single-agent or single-platform framework. The cross-platform version governing multi-vendor orchestration chains does not yet exist. Req 11 at the cross-platform level.</td></tr>
+    <tr class="item-row item-missing"><td colspan="2">Unified cross-platform accountability attribution: the ability to trace a multi-agent outcome back through a complete cross-platform authorization chain and identify who was accountable for each decision at each step. Req 14.</td></tr>
+    <tr class="checklist-footer"><td colspan="2"><strong>This assessment reflects the state of the market as of March 2026.</strong> The agentic governance space is moving rapidly. New tools, implementations, and research are emerging continuously. If you are aware of solutions that should update any of these assessments, please reach out. The OGF is a living document and community input is how it improves. Contact: [contact]</td></tr>
+  </tbody></table>
+
+  <h3 class="subhead">B5b. How the Governance Gap Fails in Practice: Three Scenarios</h3>
+  <p>The following scenarios illustrate how cross-platform orchestration fails under current governance controls, and how OGF requirements change the outcome. Each scenario involves agents that are individually compliant. The failure is a property of the chain, not the components.</p>
+
+  <div class="callout amber" style="margin-bottom:8px;">
+    <div class="callout-label">Requirement numbering note</div>
+    <p>OGF controls cited in these scenarios reference Requirements 7 through 14 of the Phase 3 framework. Where single-platform foundation components (Requirements 1 through 6, documented in Section A) are prerequisites for those controls, they are noted as foundation requirements rather than Phase 3 requirements.</p>
+  </div>
+
+  <h3 class="subhead" style="font-size:17px;">Scenario 1: Financial Services — Procurement Authorization Chain</h3>
+  <table class="scenario-table">
+    <tbody><tr><td class="s-label">Chain</td><td>A vendor evaluation agent on Platform A identifies a qualifying supplier and creates a purchase recommendation. It hands off to a contract drafting agent on Platform B, which generates a contract and routes it to an approval orchestration agent on Platform C, which determines the appropriate approval tier and routes for signature.</td></tr>
+    <tr><td class="s-label">What each agent does correctly</td><td>Agent A applies the correct supplier qualification criteria configured at deployment. Agent B generates a contract within approved template parameters. Agent C routes to the correct approver tier based on contract value thresholds set in its configuration.</td></tr>
+    <tr><td class="s-label">Where governance fails</td><td>Agent A's supplier qualification criteria were updated six months ago following a new vendor risk policy. The configuration was not updated. Agent B's template parameters include a liability cap that legal revised three months ago. Agent C's approval routing reflects a pre-reorganization org chart. The contract that reaches the CFO was assembled from three outdated instruction sets. No individual agent deviated from its configuration. Across three platforms with independent configuration surfaces and no unified provenance record, the compound error is invisible to any single team, any single audit, and any single-platform monitoring system.</td></tr>
+    <tr><td class="s-label">OGF controls that change the outcome</td><td>Foundation Req 6 (Decision Registry): all three agents maintain version-controlled governance rules with reconsideration triggers that would have flagged outdated configurations. Req 8 (Pre-Deployment Authority Definition): the chain context review identifies the dependency between the three agents' rule sets before go-live. Req 10 (Cross-Platform Provenance Tracking): the CFO sees that all three agents' configurations predate the relevant policy changes and can query whether the assembled contract reflects current organizational intent before signing.</td></tr>
+  </tbody></table>
+
+  <h3 class="subhead" style="font-size:17px;">Scenario 2: Healthcare — Clinical Decision Support Chain</h3>
+  <table class="scenario-table">
+    <tbody><tr><td class="s-label">Chain</td><td>A patient intake agent on a healthcare platform reads incoming clinical notes and flags high-priority cases. It passes flags to a scheduling agent on a separate platform, which allocates appointment slots. Both agents feed data to a documentation agent that populates care coordination records.</td></tr>
+    <tr><td class="s-label">What each agent does correctly</td><td>The intake agent applies the correct clinical urgency criteria configured at deployment. The scheduling agent allocates slots according to its configured priority rules. The documentation agent records accurately what each agent produced.</td></tr>
+    <tr><td class="s-label">Where governance fails</td><td>The intake agent's urgency flags weight certain diagnostic codes more heavily than others. The scheduling agent's priority rules, set by a different team, happen to correlate high-priority slots with certain access categories. Over time, their interaction produces a pattern that appears to disadvantage certain patients relative to clinical urgency expectations, surfacing a fairness and governance concern that no individual agent's monitoring would have detected. The pattern exists only in the compound behavior of two instruction sets configured independently, by different teams, with no review of their combined effect.</td></tr>
+    <tr><td class="s-label">OGF controls that change the outcome</td><td>Req 11 (System-Level Behavioral Monitoring): interaction-level pattern detection identifies the emerging correlation across the chain, invisible to single-agent or single-platform monitoring. Req 9 (Authority Inheritance Protocols): the scheduling agent performs a governance check on the upstream signal's authorized use in this workflow context before acting on it. Req 14 (Accountability Attribution): when the concern is surfaced, the pattern is traceable to the specific configuration decisions at both agents, identifying the governance gap and the named human accountabilities for each rule set.</td></tr>
+  </tbody></table>
+
+  <h3 class="subhead" style="font-size:17px;">Scenario 3: Enterprise — Multi-Platform Customer Engagement Chain</h3>
+  <table class="scenario-table">
+    <tbody><tr><td class="s-label">Chain</td><td>A CRM agent on Platform A identifies customer renewal risk and triggers a response workflow. It passes the customer record to a pricing agent on Platform B, which calculates a retention offer. The offer is passed to a communication agent on Platform C, which sends the offer via email.</td></tr>
+    <tr><td class="s-label">What each agent does correctly</td><td>The CRM agent applies the correct churn risk criteria. The pricing agent generates a discount within its configured maximum. The communication agent sends a compliant, approved email template.</td></tr>
+    <tr><td class="s-label">Where governance fails</td><td>The primary failure is a data residency violation: the CRM agent was configured before a new policy required that certain EU customer records not be passed to Platform B, which is hosted outside the EU. The cross-platform handoff processes the transfer without any mechanism to verify whether the current governance rules permit it. Secondary failures compound the exposure: the pricing agent's margin floor was updated after its last configuration review, and the communication agent's template predates a disclosure requirement now applicable in certain jurisdictions. When a regulatory inquiry arrives, no unified provenance chain exists across the three platforms. Each vendor's logs are siloed.</td></tr>
+    <tr><td class="s-label">OGF controls that change the outcome</td><td>Req 7 (Cross-Platform Agent Inventory): the chain is documented before it processes live customer data, including the data residency constraints that apply at each handoff boundary. Req 9 (Authority Inheritance Protocols): the pricing agent verifies before accepting the handoff that the transfer of EU customer data is permitted under its own governance rules, creating the boundary check that would stop the noncompliant transfer. Req 10 (Cross-Platform Provenance Tracking): a unified provenance record allows the compliance team to trace exactly which agent processed which customer record under which configuration, answering the regulatory inquiry without manual cross-system reconstruction.</td></tr>
+  </tbody></table>
+
+</div>
+<!-- B6 REQUIREMENTS -->
+<div class="section-divider" style="margin-top:0;">
+  <div class="section-num">Section B6</div>
+  <h2>The Eight Requirements: Phase 3, Multi-Platform Interlock</h2>
+  <div class="section-sub">Numbered 7–14 as a continuous extension of the six single-platform components in Section A</div>
+</div>
+<div class="content">
+  <p>These eight requirements are numbered 7 through 14 as a continuous extension of the six single-platform components in Section A. They are not aspirational principles. They are operational requirements: conditions that must be true of the governance infrastructure for governance to function across platform boundaries. Phase 3 requires Phase 0 through Phase 2 as its foundation.</p>
+
+  <div class="req-block">
+    <div class="req-num-cell">7</div>
+    <div class="req-content">
+      <div class="req-title">Cross-Platform Agent Inventory</div>
+      <div class="req-body">Every agent in the orchestration chain must be known before governance can be applied, including internally built, co-developed, and adjacent system agents. Governance cannot begin at the handoff if it does not know what is on the other side. This is the multi-platform equivalent of Phase 0a Shadow AI Discovery, extended from within-platform to across-platform.</div>
+      <div class="req-testability">
+        <div class="req-testability-label">Testability</div>
+        <div class="testability-row"><strong>Minimum condition:</strong> Complete inventory of every agent in the orchestration chain, including homegrown agents, with a named owner assigned to each before it participates in cross-platform coordination.</div>
+        <div class="testability-row"><strong>Evidence artifact:</strong> Agent registry showing name, platform, owner, authorization scope, and date of last governance review for every agent in the chain.</div>
+        <div class="testability-row"><strong>Failure mode prevented:</strong> Agents joining the chain without governance review, operating beyond their authorized scope without any governance record of their participation.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="req-block">
+    <div class="req-num-cell">8</div>
+    <div class="req-content">
+      <div class="req-title">Pre-Deployment Authority Definition</div>
+      <div class="req-body">Every agent must have its authority boundaries explicitly defined before it joins a production orchestration chain, specifying what it may initiate and execute in the context of the chain, not just in isolation. The configuration that governs an agent in isolation may not be the right configuration for that agent operating as part of a coordinated chain. Authority definition for orchestration is not the same as deployment configuration.</div>
+      <div class="req-testability">
+        <div class="req-testability-label">Testability</div>
+        <div class="testability-row"><strong>Minimum condition:</strong> Each agent's authority in chain context is explicitly documented before go-live, signed off by a named human with the standing to authorize it, distinct from technical deployment configuration.</div>
+        <div class="testability-row"><strong>Evidence artifact:</strong> Pre-deployment authority record per agent including chain-context scope, named approver, approval date, and reconsideration trigger.</div>
+        <div class="testability-row"><strong>Failure mode prevented:</strong> Agents operating in chain context under authority defined only for isolated deployment, with no record of whether chain participation was explicitly authorized.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="req-block">
+    <div class="req-num-cell">9</div>
+    <div class="req-content">
+      <div class="req-title">Authority Inheritance Protocols</div>
+      <div class="req-body">When a task passes across a platform boundary, the governance constraints that governed the originating action must travel with it in a defined, enforceable way. Authority inheritance is not automatic. Without explicit protocol, every receiving agent risks becoming a confused deputy: technically authenticated, organizationally ungoverned, inheriting whatever authority claim the sending agent carried with no mechanism to validate its legitimacy.</div>
+      <div class="req-testability">
+        <div class="req-testability-label">Testability</div>
+        <div class="testability-row"><strong>Minimum condition:</strong> At each platform boundary, the receiving agent performs a governance check on the upstream signal's authorized use in this workflow context before acting on it. Both sides of the handoff have explicit records of the authority transfer.</div>
+        <div class="testability-row"><strong>Evidence artifact:</strong> Handoff record at each platform boundary capturing originating authority context, receiving agent validation, applicable governance rule version, and timestamp.</div>
+        <div class="testability-row"><strong>Failure mode prevented:</strong> Receiving agents acting on authority claims from upstream agents without any mechanism to verify whether those claims are current, valid, or within the receiving agent's own authorization scope.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="req-block">
+    <div class="req-num-cell">10</div>
+    <div class="req-content">
+      <div class="req-title">Cross-Platform Provenance Tracking</div>
+      <div class="req-body">Every action in a multi-agent chain must be linked to an unbroken record of authorization from initiation to execution. Not per-platform audit logs in separate systems requiring manual correlation. Provenance tracking is not only an audit requirement: it is the evidentiary foundation of the enterprise's legal position under the EU AI Act. Without it, an organization cannot demonstrate the governance discipline that distinguishes a governed deployment from a substantial modification.</div>
+      <div class="req-testability">
+        <div class="req-testability-label">Testability</div>
+        <div class="testability-row"><strong>Minimum condition:</strong> Each consequential handoff records originating authority context, receiving validation, applicable governance rule version, and human approver provenance in a unified chain retrievable by outcome ID.</div>
+        <div class="testability-row"><strong>Evidence artifact:</strong> Unified provenance chain record spanning all platforms in the orchestration chain, retrievable as a single auditable record rather than requiring manual cross-system correlation.</div>
+        <div class="testability-row"><strong>Failure mode prevented:</strong> Post-incident manual reconstruction of what happened across siloed per-platform logs with different formats, retention policies, and no unified chain of authorization.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="req-block">
+    <div class="req-num-cell">11</div>
+    <div class="req-content">
+      <div class="req-title">System-Level Behavioral Monitoring</div>
+      <div class="req-body">The orchestration system as a whole must be monitored for interaction-level behavioral patterns invisible to any single-agent governance framework. This requires monitoring at the reasoning chain level, not just the output level: understanding why an agent took an action and whether that reasoning reflects authorized intent. Published findings from March 2026 confirm that reasoning-chain monitoring surfaces behaviors invisible to output-only review, and that instruction sets can inadvertently encourage agents to work around restrictions. Organizations should build toward Req 11 in two stages: single-platform reasoning-chain monitoring first, cross-platform interaction monitoring as the infrastructure matures.</div>
+      <div class="req-testability">
+        <div class="req-testability-label">Testability</div>
+        <div class="testability-row"><strong>Minimum condition:</strong> System-level monitoring detects interaction patterns across the chain that would not be visible in any single agent's logs. At minimum, single-platform reasoning-chain monitoring is operational before cross-platform deployment scales.</div>
+        <div class="testability-row"><strong>Evidence artifact:</strong> System-level behavioral report covering interaction pattern analysis across the chain, flagged anomalies not attributable to any single agent, and resolution record.</div>
+        <div class="testability-row"><strong>Failure mode prevented:</strong> Emergent discriminatory or noncompliant behavior produced by the interaction of individually compliant agents that no single-agent or output-only monitoring framework would detect.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="req-block">
+    <div class="req-num-cell">12</div>
+    <div class="req-content">
+      <div class="req-title">Evidence-Based Rule Governance</div>
+      <div class="req-body">Changes to governance rules must be validated against historical operational data before deployment. The question is not whether a proposed change seems reasonable. The question is what would have happened across the full range of agent interactions over the past thirty days if this rule had been in effect. Governance rules that have not been tested against operational history are hypotheses. Hypotheses deployed into production orchestration at enterprise scale are liabilities.</div>
+      <div class="req-testability">
+        <div class="req-testability-label">Testability</div>
+        <div class="testability-row"><strong>Minimum condition:</strong> Every governance rule change is backtested against at least 30 days of historical operational data before deployment. Simulation results are attached as evidence to the approval record.</div>
+        <div class="testability-row"><strong>Evidence artifact:</strong> Simulation report for each rule change showing what would have happened under the proposed rule across the historical transaction set, with blast radius and edge case analysis.</div>
+        <div class="testability-row"><strong>Failure mode prevented:</strong> Rule changes deployed on the basis of intuitive reasonableness that produce unintended consequences at the interaction level only visible in production after the fact.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="req-block">
+    <div class="req-num-cell">13</div>
+    <div class="req-content">
+      <div class="req-title">Version-Controlled Authority Records</div>
+      <div class="req-body">Every governance rule must be stored with its complete provenance: what it is, why it exists, what evidence justified it, who approved it, what alternatives were considered, and when it should be reconsidered. This is the cure for Institutional Amnesia: the organizational condition where rules survive personnel changes but their reasoning does not. Rules without provenance cannot be audited, cannot be safely updated, and do not survive the people who created them.</div>
+      <div class="req-testability">
+        <div class="req-testability-label">Testability</div>
+        <div class="testability-row"><strong>Minimum condition:</strong> Every governance rule has a version-controlled record containing rule text, business rationale, evidence basis, named approver, approval date, alternatives considered, and reconsideration trigger. Records survive personnel changes intact.</div>
+        <div class="testability-row"><strong>Evidence artifact:</strong> Version-controlled rule registry with full provenance for every active governance rule, accessible to auditors and retrievable by rule ID, agent ID, or outcome ID.</div>
+        <div class="testability-row"><strong>Failure mode prevented:</strong> Institutional Amnesia: governance rules that survive personnel changes but whose reasoning does not, creating rules that cannot be safely updated because no one knows why they exist.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="req-block">
+    <div class="req-num-cell">14</div>
+    <div class="req-content">
+      <div class="req-title">Unified Accountability Attribution</div>
+      <div class="req-body">When an orchestrated system produces an outcome requiring review, it must be possible to trace that outcome to a specific chain of authorization and determine whether each link was consistent with the governance framework in effect at the time. Accountability that cannot be attributed is not accountability. It is exposure distributed across every party in the chain with no mechanism for resolution.</div>
+      <div class="req-testability">
+        <div class="req-testability-label">Testability</div>
+        <div class="testability-row"><strong>Minimum condition:</strong> Any outcome from the orchestration chain can be traced to a complete cross-platform authorization chain identifying the named human accountabilities at each decision point, within a defined time standard for regulatory or incident response.</div>
+        <div class="testability-row"><strong>Evidence artifact:</strong> Outcome trace record linking the result to every authorization decision in the chain, with named accountabilities and governance rule versions in effect at each step.</div>
+        <div class="testability-row"><strong>Failure mode prevented:</strong> Multi-vendor incidents where accountability is disputed or unresolvable because no unified record exists of who authorized what at each step in the chain.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="subhead">B7. The Logic Product Manager</h3>
+  <p>The infrastructure described in Requirements 7 through 14 requires a named human role to own it. The Logic Product Manager is the organizational function responsible for maintaining the accuracy of governance rules across the organization's agent ecosystem, reviewing escalations, approving rule changes based on simulation evidence, and ensuring that the institutional memory the Registry preserves does not decay back into the patchwork it was designed to replace.</p>
+  <p>This role does not yet exist under this name in most enterprises. The function exists informally, distributed across AI operations teams, compliance functions, and engineering leads without unified ownership or mandate. The Logic Product Manager consolidates that ownership: humans approve rules, not individual actions. Every rule change is evidence-based. Every escalation is a discovery opportunity.</p>
+  <p>The Logic Product Manager is a named operating role or mandate, not necessarily a new box on the org chart. In different organizations it may sit within AI Ops, product governance, model risk, enterprise architecture, or compliance. The title matters less than the mandate: one named human who owns the accuracy of the governance logic and has the authority to require evidence before rules change.</p>
+</div>
+
+<!-- APPENDIX A: COMPETITIVE LANDSCAPE -->
+<div class="section-divider">
+  <div class="section-num">Appendix A</div>
+  <h2>Competitive Landscape</h2>
+  <div class="section-sub">Reference section: six categories, a growing market, and the gap that remains</div>
+</div>
+<div class="content">
+  <p>This appendix is a reference section for practitioners evaluating tooling against the OGF requirements. It is not part of the core standard. The core standard is Sections 0 through D. This appendix describes how the current market landscape maps to the requirements defined there.</p>
+  <p>The market has organized itself into six categories addressing different layers of the AI governance problem. Each category addresses part of the stack. Based on public information reviewed as of March 2026, no category provides the full cross-platform authority layer that Requirements 7 through 14 define.</p>
+  <p>This appendix describes categories rather than specific vendors by design. The agentic governance market is advancing rapidly: tools in every category have expanded their capabilities significantly in 2025 and 2026. Vendor-specific assessments become outdated within months and create barriers to the collaborative conversation this framework is intended to support.</p>
+
+  <div class="callout amber">
+    <div class="callout-label">Assessment methodology</div>
+    <p>Evaluation criteria: (1) does the category govern authority, not just capability or access? (2) does it operate across platform boundaries? (3) does it provide enforcement at the moment of execution, not only documentation after the fact? (4) does it maintain version-controlled provenance across the full orchestration chain? Assessment date: March 2026. Contact: [contact]</p>
+  </div>
+
+  <table class="comp-table">
+    <tbody><tr>
+      <th style="width:160px;">Category</th>
+      <th style="width:220px;">What tools in this category do</th>
+      <th style="width:180px;">Scope</th>
+      <th>Gap against OGF Requirements 7–14</th>
+    </tr>
+    <tr>
+      <td><span class="comp-cat">Access and Non-Human Identity</span></td>
+      <td>Lifecycle management for machine identities, AI agents, and service accounts. Just-in-time permissions, secrets rotation, intent inference for what an agent is trying to access and why.</td>
+      <td>Governs identity and access at the credential and permission layer. Increasingly extending to agentic context awareness.</td>
+      <td>Access governance is not authority governance. This category does not typically provide cross-platform authority inheritance (Req 9), cross-platform provenance tracking (Req 10), or version-controlled authority records with organizational reasoning (Req 13).</td>
+    </tr>
+    <tr>
+      <td><span class="comp-cat">Telemetry and Observability</span></td>
+      <td>Model performance monitoring, drift detection, explainability, behavioral analysis, and LLM trace capture. Increasingly extends to agent-level interaction tracing and reasoning chain visibility.</td>
+      <td>Governs what happened and why from a performance and reliability lens. Detects degradation, drift, and anomalous outputs within monitored systems.</td>
+      <td>Observability is not authority enforcement. This category does not typically enforce authority boundaries at the cross-platform handoff (Req 9), maintain the authorization chain as a provenance record (Req 10), or provide system-level behavioral governance across multi-vendor orchestration chains (Req 11).</td>
+    </tr>
+    <tr>
+      <td><span class="comp-cat">Runtime Guardrails and Gateways</span></td>
+      <td>Content enforcement at the inference layer. Prompt injection detection, PII filtering, harmful output prevention, topic blocking, and policy enforcement at the point of model response.</td>
+      <td>Governs what agents say and what content passes through the inference boundary. Fast, low-latency enforcement at the output layer.</td>
+      <td>Content governance is not authority governance. Guardrails control what an agent produces. This category does not typically govern cross-platform authority inheritance, chain provenance, or the organizational authorization record that makes outcomes attributable.</td>
+    </tr>
+    <tr>
+      <td><span class="comp-cat">Agent Security and Visibility</span></td>
+      <td>Cross-platform agent discovery, security posture management, runtime threat detection, blast radius mapping, and behavioral anomaly detection. Increasingly extends to stateful interaction chain analysis and intent interpretation.</td>
+      <td>Governs the security posture of the agent ecosystem. Detects rogue agents, misconfigurations, prompt injection attacks, and security threats across agent deployments.</td>
+      <td>Security governance and authority governance are distinct disciplines. This category does not typically provide cross-platform authority inheritance (Req 9), version-controlled authority records with organizational reasoning (Req 13), or unified accountability attribution (Req 14) as governance artifacts rather than security artifacts.</td>
+    </tr>
+    <tr>
+      <td><span class="comp-cat">Platform Governance</span></td>
+      <td>End-to-end AI lifecycle governance within a platform environment. Includes model inventory, pre-deployment validation, policy enforcement, compliance mapping, agent management, and business impact measurement.</td>
+      <td>Governs the full AI lifecycle within an integrated platform environment. The most mature category for single-platform governance. Increasingly extending to cross-platform agent visibility.</td>
+      <td>The closest existing category to OGF requirements and advancing rapidly. The gap that remains is specifically at the authority layer: version-controlled governance rules with organizational reasoning that survive personnel changes (Req 13), cross-platform authority inheritance as an organizational act (Req 9), and unified accountability attribution across multi-vendor chains (Req 14).</td>
+    </tr>
+    <tr>
+      <td><span class="comp-cat">Policy and Regulatory Compliance</span></td>
+      <td>Regulatory framework alignment, risk assessment, audit documentation, and compliance evidence generation. Maps AI systems to EU AI Act, NIST AI RMF, ISO 42001, and other frameworks.</td>
+      <td>Governs compliance documentation and policy alignment. Produces evidence that AI systems were assessed against relevant regulatory requirements.</td>
+      <td>Policy compliance documents governance intent. Authority governance enforces it at runtime across platform boundaries. Documentation that a governance policy exists does not constitute enforcement of that policy when agents coordinate across platforms.</td>
+    </tr>
+  </tbody></table>
+
+  <p>The category-level claim: each category governs within a defined scope. Access and identity management governs what agents can access. Telemetry governs what happened. Guardrails govern what agents say. Agent security governs how agents behave from a threat posture. Platform governance governs within the platform environment. Policy compliance documents regulatory alignment. The cross-platform authority layer, governing what an orchestrated system is sanctioned to produce across platform boundaries, enforcing that at the moment of execution, and maintaining the version-controlled evidence that makes it auditable and defensible, is the focus of this framework. That gap is what Requirements 7 through 14 define.</p>
+</div>
+
+<!-- SECTION D: MATURITY -->
+<div class="section-divider">
+  <div class="section-num">Section D</div>
+  <h2>Maturity Assessment and Where to Start</h2>
+  <div class="section-sub">Four stages, immediate actions, and the path through Phase 3</div>
+</div>
+<div class="content">
+  <p>The OGF is a standard, not a product. Organizations implement it through whatever combination of process, tooling, and organizational commitment satisfies the requirements. The path is staged and contextual. This section tells you where you are and what to build next.</p>
+
+  <table class="maturity-table">
+    <tbody><tr>
+      <th style="width:130px;">Stage</th>
+      <th>Single-platform foundation (Phase 0–2)</th>
+      <th>Multi-platform authority layer (Phase 3)</th>
+      <th>Immediate next step</th>
+    </tr>
+    <tr>
+      <td><span class="stage-cell" style="color:#A32D2D;background:#FCEBEB;display:block;padding:8px;">Stage 1<br>Reactive</span></td>
+      <td>Informal monitoring. No structured escalation process. Shadow AI largely undiscovered. Governance rules exist in people's heads and configuration files with no provenance.</td>
+      <td>Phase 3 not applicable. Single-platform foundation is the prerequisite.</td>
+      <td>Conduct shadow AI discovery. Name a governance owner for your highest-volume agent. Document the reasoning behind three governance rules in a shared record.</td>
+    </tr>
+    <tr>
+      <td><span class="stage-cell" style="color:#854F0B;background:#FAEEDA;display:block;padding:8px;">Stage 2<br>Structured review</span></td>
+      <td>Regular review cadence. Named team. Basic change log. Root cause analysis emerging. Pre-deployment testing inconsistent.</td>
+      <td>Phase 3 not applicable. Close Phase 2 gaps before extending to orchestration.</td>
+      <td>Implement pre-deployment simulation testing for your most consequential agent. Build the decision registry to Stage 3 standard for one agent before attempting Phase 3.</td>
+    </tr>
+    <tr>
+      <td><span class="stage-cell" style="color:#0F6E56;background:#E1F5EE;display:block;padding:8px;">Stage 3<br>Evidence-based</span></td>
+      <td>All six single-platform components active. Simulation required before rule changes. Full decision registry. Compliance-calibrated. ISO 42001 achievable.</td>
+      <td>Phase 3 entry point. Begin with Requirements 7 and 8: cross-platform agent inventory and pre-deployment authority definition for agents entering orchestration chains.</td>
+      <td>Complete cross-platform agent inventory (Req 7). Define authority boundaries for each agent in the context of its orchestration chain, not just in isolation (Req 8).</td>
+    </tr>
+    <tr>
+      <td><span class="stage-cell" style="color:#1B2A4A;background:#F7FAFC;display:block;padding:8px;">Stage 4<br>Institutional</span></td>
+      <td>Registry is first-class institutional asset. Governance is proactive. Stage 3 is the operational floor.</td>
+      <td>Full Phase 3 architecture active. Authority inheritance protocols in place. Cross-platform provenance tracking. System-level behavioral monitoring.</td>
+      <td>Implement cross-platform interaction monitoring (Req 11). Contribute operational learnings to the OGF as the standard evolves.</td>
+    </tr>
+  </tbody></table>
+
+  <h3 class="subhead">Three immediate actions that require no procurement</h3>
+  <p>Regardless of current maturity stage, these three actions can begin this week and deliver immediate governance value.</p>
+
+  <div class="action-block">
+    <p><strong>Shadow AI discovery:</strong> Find every agent running in your environment, including those your teams built informally. Assign a named owner to each one. You cannot govern what you have not found.</p>
+  </div>
+  <div class="action-block">
+    <p><strong>Name the Logic Product Manager:</strong> Assign a named human being to be accountable for the accuracy of governance rules governing your highest-volume agent deployment. That person does not need a title yet. They need a mandate.</p>
+  </div>
+  <div class="action-block">
+    <p><strong>Build your first decision registry entry:</strong> Document the governance rules for your most consequential agent, the reasoning behind each rule, who approved it, and when it should be reconsidered. Start with one agent. The practice matters more than the coverage.</p>
+  </div>
+
+  <div class="callout grey">
+    <div class="callout-label">The OGF will evolve</div>
+    <p>This standard is published as a starting point, not a finished product. It will develop as organizations contribute operational experience, as the tooling market matures, and as the regulatory framework develops guidance on multi-agent orchestration. If you are working on any part of this problem, the conversation is open. Contact Decision DNA Group at [contact].</p>
+  </div>
+</div>
+
+<!-- APPENDIX B: SOURCE NOTES -->
+<div class="section-divider">
+  <div class="section-num">Appendix B</div>
+  <h2>Source Notes</h2>
+  <div class="section-sub">Attribution for the framework's principal external claims</div>
+</div>
+<div class="content">
+  <p>This appendix provides source attribution for the external claims in the framework that are most subject to challenge. Internal conceptual claims (Tethered Agent Problem, Logic Hallucination, Governance Debt, Orchestration Governance Framework, Registry of Authority, Logic Product Manager) are original work of Decision DNA Group. The following claims draw on external sources.</p>
+
+  <table class="source-table">
+    <tbody><tr>
+      <th style="width:200px;">Claim</th>
+      <th>Source and notes</th>
+    </tr>
+    <tr>
+      <td><span class="source-claim">MCP adoption statistics</span></td>
+      <td>MCP Blog, "MCP joins the Agentic AI Foundation," December 9, 2025. Public MCP materials cite over 97 million monthly SDK downloads and 10,000+ active servers. First-class platform support confirmed across ChatGPT, Claude, Cursor, Gemini, Microsoft Copilot, and VS Code.</td>
+    </tr>
+    <tr>
+      <td><span class="source-claim">MCP governance structure</span></td>
+      <td>MCP Blog, "The 2026 MCP Roadmap," March 9, 2026 (David Soria Parra, Lead Maintainer). MCP is now a founding project of the Agentic AI Foundation under the Linux Foundation, co-founded by Anthropic, Block, and OpenAI.</td>
+    </tr>
+    <tr>
+      <td><span class="source-claim">A2A governance and partners</span></td>
+      <td>Linux Foundation press release, "Linux Foundation Launches the Agent2Agent Protocol Project," June 23, 2025. Founding members include AWS, Cisco, Google, Microsoft, Salesforce, SAP, and ServiceNow.</td>
+    </tr>
+    <tr>
+      <td><span class="source-claim">EU AI Act: provider and deployer definitions</span></td>
+      <td>Regulation (EU) 2024/1689 (EU AI Act), Articles 3, 25. The Act defines provider and deployer obligations and specifies that a party making a substantial modification to a high-risk AI system is treated as a provider for that modified system. The multi-agent substantial modification interpretation is this framework's analysis, not a settled regulatory determination.</td>
+    </tr>
+    <tr>
+      <td><span class="source-claim">EU AI Act: penalty structure</span></td>
+      <td>EU AI Act Article 99. Penalties for violations of Article 5 prohibited practices: up to EUR 35 million or 7% of total worldwide annual turnover, whichever is higher. Penalties for operator violations of other obligations under the Act, including deployer obligations under Article 26: up to EUR 15 million or 3%. Supply of incorrect information to authorities: up to EUR 7.5 million or 1%. General application date: August 2, 2026, with some provisions already in force and others phased in. High-risk AI systems embedded into regulated products have an extended transition period to August 2, 2027.</td>
+    </tr>
+    <tr>
+      <td><span class="source-claim">EU AI Act: application timeline</span></td>
+      <td>EU AI Act Article 113. The Act generally applies from August 2, 2026. Certain provisions apply earlier (prohibited practices from February 2, 2025) and certain obligations for general-purpose AI models apply from August 2025.</td>
+    </tr>
+    <tr>
+      <td><span class="source-claim">Agent reasoning-chain monitoring</span></td>
+      <td>OpenAI internal findings published March 2026. OpenAI's monitoring system uses a more capable model to review agent reasoning chains and flag misaligned behavior across internal coding agent deployments. Key findings: agents can be overly eager to work around restrictions in ways invisible to output-only review; developer prompts can inadvertently encourage circumvention; reasoning-chain monitoring surfaces behaviors output-only review misses.</td>
+    </tr>
+    <tr>
+      <td><span class="source-claim">System-level outcomes from compliant components</span></td>
+      <td>The general principle that individually compliant or well-performing components can produce unintended system-level outcomes is supported by research in sociotechnical systems and algorithmic fairness. This framework applies that principle to multi-agent governance; it does not cite a specific study on chained AI agent systems, as the direct literature on this specific configuration is still developing.</td>
+    </tr>
+  </tbody></table>
+</div>
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <div class="footer-org">Decision DNA Group</div>
+  <div class="footer-meta">© 2026 &nbsp;|&nbsp; Open resource — freely shareable with attribution &nbsp;|&nbsp; Status: Published for comment and community input &nbsp;|&nbsp; decisiondna.com &nbsp;|&nbsp; [contact]</div>
+</div>
+
+
+
+</body></html>
